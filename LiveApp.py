@@ -13,6 +13,7 @@ import time
 import re
 import logging
 import os,sys
+from config import ITConfig
 try:
     import xlrd
 except:
@@ -219,13 +220,13 @@ def encodePostStr(postData):
 
 #发送通知邮件
 def sendMail(text):
-    sender = 'no-reply@myhost.cn'  
-    receiver = ['penn@myhost.cn']
-    mailToCc = ['penn@myhost.cn']
+    sender = ITConfig.smtp_username 
+    receiver = ['lichengbo@corp.netease.com']
+    mailToCc = ['zhangjunlong@corp.netease.com']
     subject = '[AutomantionTest]接口自动化测试报告通知'  
-    smtpserver = 'smtp.exmail.qq.com'  
-    username = 'no-reply@myhost.cn'  
-    password = 'password'  
+    smtpserver = 'service.netease.com'  
+    username = ITConfig.smtp_username   
+    password = ITConfig.smtp_password  
     
     msg = MIMEText(text,'html','utf-8')      
     msg['Subject'] = subject  
